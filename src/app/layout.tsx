@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SkipLink } from "@/components/layout/skip-link";
 import { StickyMobileCta } from "@/components/layout/sticky-mobile-cta";
+import { localBusinessSchema } from "@/lib/schema";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -58,6 +59,12 @@ export default function RootLayout({
 }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+        />
+      </head>
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
         <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem>
           <SkipLink />

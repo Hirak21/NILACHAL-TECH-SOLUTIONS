@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { insights, getInsight } from "@/content/insights";
 import { generatePageMetadata } from "@/lib/seo";
+import { articleSchema } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import { ArticleContent } from "./content";
 
@@ -25,5 +26,13 @@ export default async function InsightPage({ params }: Props) {
   const { slug } = await params;
   const article = getInsight(slug);
   if (!article) notFound();
-  return <ArticleContent article={article} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema(article)) }}
+      />
+      <ArticleContent article={article} />
+    </>
+  );
 }

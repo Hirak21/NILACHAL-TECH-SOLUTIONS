@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { navItems, siteConfig } from "@/content/site";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./theme-toggle";
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,17 +36,21 @@ export function SiteHeader() {
           >
             {siteConfig.navCta.label}
           </Link>
+          <ThemeToggle />
         </nav>
 
-        <button
-          className="rounded p-2 text-[var(--fg)] md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            className="rounded p-2 text-[var(--fg)]"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (

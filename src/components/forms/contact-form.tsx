@@ -35,10 +35,18 @@ export function ContactForm() {
   const onSubmit = async (data: ContactFormData) => {
     if (data.honeypot) return;
     setStatus("loading");
-    // TODO: implement API route or server action
-    await new Promise((r) => setTimeout(r, 1000));
-    setStatus("success");
-    reset();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setStatus("success");
+      reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
