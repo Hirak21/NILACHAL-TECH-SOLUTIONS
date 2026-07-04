@@ -42,7 +42,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <a href={siteConfig.whatsappLink} target="_blank" rel="noopener">
-                  WhatsApp
+                  WhatsApp <span className="sr-only">(opens in a new tab)</span>
                 </a>
               </li>
               <li>

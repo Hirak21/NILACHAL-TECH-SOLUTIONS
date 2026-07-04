@@ -43,7 +43,7 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-[var(--color-gold)]/30 bg-[var(--color-forest)]/50 p-8 text-center">
+      <div className="rounded-lg border border-[var(--color-gold)]/30 bg-[var(--color-forest)]/50 p-8 text-center" role="status">
         <h3 className="text-xl font-semibold text-[var(--fg)]">Thank you!</h3>
         <p className="mt-2 text-[var(--muted)]">
           We have received your message and will get back to you shortly.
@@ -70,10 +70,14 @@ export function ContactForm() {
             id={field.name}
             type={field.type}
             {...register(field.name)}
+            aria-invalid={!!errors[field.name]}
+            aria-describedby={errors[field.name] ? `${field.name}-error` : undefined}
             className="w-full rounded border border-white/10 bg-[var(--bg)] px-4 py-3 text-sm text-[var(--fg)] placeholder:text-[var(--muted)] focus:border-[var(--color-gold)] focus:outline-none"
           />
           {errors[field.name] && (
-            <p className="mt-1 text-xs text-red-400">{errors[field.name]?.message}</p>
+            <p id={`${field.name}-error`} className="mt-1 text-xs text-red-400" role="alert">
+              {errors[field.name]?.message}
+            </p>
           )}
         </div>
       ))}
@@ -85,6 +89,8 @@ export function ContactForm() {
         <select
           id="service"
           {...register("service")}
+          aria-invalid={!!errors.service}
+          aria-describedby={errors.service ? "service-error" : undefined}
           className="w-full rounded border border-white/10 bg-[var(--bg)] px-4 py-3 text-sm text-[var(--fg)] focus:border-[var(--color-gold)] focus:outline-none"
         >
           <option value="">Select a service</option>
@@ -94,7 +100,7 @@ export function ContactForm() {
           <option value="automation-and-strategy">Automation and Strategy</option>
         </select>
         {errors.service && (
-          <p className="mt-1 text-xs text-red-400">{errors.service.message}</p>
+          <p id="service-error" className="mt-1 text-xs text-red-400" role="alert">{errors.service.message}</p>
         )}
       </div>
 
@@ -106,11 +112,13 @@ export function ContactForm() {
           id="problem"
           {...register("problem")}
           rows={4}
+          aria-invalid={!!errors.problem}
+          aria-describedby={errors.problem ? "problem-error" : undefined}
           className="w-full rounded border border-white/10 bg-[var(--bg)] px-4 py-3 text-sm text-[var(--fg)] placeholder:text-[var(--muted)] focus:border-[var(--color-gold)] focus:outline-none"
           placeholder="Describe your current workflow, challenges and what you need"
         />
         {errors.problem && (
-          <p className="mt-1 text-xs text-red-400">{errors.problem.message}</p>
+          <p id="problem-error" className="mt-1 text-xs text-red-400" role="alert">{errors.problem.message}</p>
         )}
       </div>
 
@@ -165,7 +173,7 @@ export function ContactForm() {
       </button>
 
       {status === "error" && (
-        <p className="text-center text-sm text-red-400">
+        <p className="text-center text-sm text-red-400" role="alert">
           Something went wrong. Please try again or contact us directly.
         </p>
       )}

@@ -1,9 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-
 export function SkipLink() {
-  const mainRef = useRef<HTMLElement | null>(null);
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     document.getElementById("main")?.focus();

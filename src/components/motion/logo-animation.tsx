@@ -6,7 +6,7 @@ export function LogoAnimation() {
   return (
     <div className="relative" aria-hidden>
       <motion.svg
-        viewBox="0 0 120 80"
+        viewBox="0 0 280 80"
         className="h-16 w-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -55,6 +55,35 @@ export function LogoAnimation() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2.5, duration: 0.5 }}
         />
+
+        {/* Wordmark transition — "Nilachal" fades in after N forms */}
+        <motion.g
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 3, duration: 0.8 }}
+        >
+          <text
+            x="110"
+            y="45"
+            fill="currentColor"
+            fontFamily="var(--font-display)"
+            fontSize="28"
+            fontWeight="600"
+            letterSpacing="-0.02em"
+          >
+            Nilachal
+          </text>
+          <text
+            x="110"
+            y="62"
+            fill="var(--color-grey)"
+            fontFamily="var(--font-mono)"
+            fontSize="9"
+            letterSpacing="0.05em"
+          >
+            TECH SOLUTIONS
+          </text>
+        </motion.g>
       </motion.svg>
     </div>
   );

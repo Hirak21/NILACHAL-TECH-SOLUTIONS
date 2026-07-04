@@ -22,7 +22,7 @@ export function ServicesPageContent() {
         </p>
 
         <div className="mt-16 space-y-16">
-          {services.map((service, i) => (
+          {services.map((service) => (
             <motion.section
               key={service.slug}
               id={service.slug}

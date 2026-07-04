@@ -164,7 +164,7 @@ export function RoadJourney3D() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [reducedMotion]);
 
-  if (reducedMotion) return null;
+  if (reducedMotion) return <StaticLandscape />;
 
   return (
     <div

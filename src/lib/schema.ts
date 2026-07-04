@@ -1,6 +1,5 @@
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
-import { projects } from "@/content/projects";
 
 export function localBusinessSchema() {
   return {

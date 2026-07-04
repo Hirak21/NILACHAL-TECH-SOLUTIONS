@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { featuredProject } from "@/content/projects";
-import { services } from "@/content/services";
 import Link from "next/link";
 
 export function FeaturedCaseSection() {

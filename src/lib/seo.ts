@@ -12,7 +12,6 @@ export function generatePageMetadata({
   path?: string;
   image?: string;
 }): Metadata {
-  const url = path ? `${siteConfig.name} ${path}` : siteConfig.name;
   const desc = description || `${title} — ${siteConfig.name}`;
 
   return {

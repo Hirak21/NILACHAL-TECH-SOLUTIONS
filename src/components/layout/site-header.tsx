@@ -42,6 +42,7 @@ export function SiteHeader() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
+          aria-controls="mobile-nav"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -49,6 +50,7 @@ export function SiteHeader() {
 
       {mobileOpen && (
         <nav
+          id="mobile-nav"
           className="border-t border-white/10 bg-[var(--bg)] px-4 pb-4 pt-3 md:hidden"
           aria-label="Mobile"
         >

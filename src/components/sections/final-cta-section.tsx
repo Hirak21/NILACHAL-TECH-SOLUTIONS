@@ -48,7 +48,7 @@ export function FinalCtaSection() {
             rel="noopener"
             className="rounded border border-[var(--muted)] px-6 py-3 text-sm font-medium text-[var(--fg)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
           >
-            Contact on WhatsApp
+            Contact on WhatsApp <span className="sr-only">(opens in a new tab)</span>
           </a>
           <Link
             href={siteConfig.secondaryCta.href}

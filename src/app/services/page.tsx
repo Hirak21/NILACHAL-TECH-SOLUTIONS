@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { services } from "@/content/services";
 import { generatePageMetadata } from "@/lib/seo";
 import { ServicesPageContent } from "./content";
 

@@ -15,8 +15,8 @@ Premium 3D motion business website for Nilachal Tech Solutions — a digital gro
 ## Getting Started
 
 ```bash
-# Install dependencies
-npm install
+# Install dependencies (requires --legacy-peer-deps due to R3F 8.x + React 19)
+npm install --legacy-peer-deps
 
 # Start dev server
 npm run dev
@@ -36,9 +36,9 @@ npm run lint
 ```
 src/
 ├── app/                     # Next.js App Router pages
-│   ├── layout.tsx           # Root layout
-│   ├── page.tsx             # Homepage
-│   ├── globals.css          # Design tokens
+│   ├── layout.tsx           # Root layout (fonts, theme, header/footer)
+│   ├── page.tsx             # Homepage (3D + 9 sections)
+│   ├── globals.css          # Tailwind v4 design tokens
 │   ├── services/            # Services page
 │   ├── work/                # Work + dynamic case studies
 │   ├── about/               # About page
@@ -48,10 +48,11 @@ src/
 │   ├── sitemap.ts           # Auto-generated sitemap
 │   └── robots.ts            # Robots.txt
 ├── components/
-│   ├── layout/              # Header, footer, theme, skip-link
-│   ├── sections/            # Homepage sections
-│   ├── forms/               # Contact form
-│   └── three/               # 3D components (future)
+│   ├── layout/              # Header, footer, theme, skip-link, sticky CTA
+│   ├── sections/            # Homepage sections (hero, problems, services, etc.)
+│   ├── forms/               # Contact form (RHF + Zod)
+│   ├── three/               # 3D scene (terrain, road, checkpoints, studio)
+│   └── motion/              # Logo animation
 ├── content/                 # Typed content data modules
 │   ├── site.ts              # Site config, nav, contact
 │   ├── services.ts          # Service definitions
@@ -71,6 +72,15 @@ See `DESIGN.md` for the full design system. Key tokens:
 - **Colors:** ink `#0A0A0A`, bone `#F5F3EE`, gold `#D6A936`, forest `#132A23`, moss `#234238`, terracotta `#9B5F42`
 - **Fonts:** Space Grotesk (headings), Inter (body), IBM Plex Mono (technical)
 - **Theme:** Dark (default) and light via `next-themes`
+
+## 3D Experience
+
+Three experience modes:
+- **Desktop:** Full 3D scroll-driven terrain with road, hills, vegetation, service checkpoints, and studio
+- **Mobile:** Simplified 2.5D mode with reduced geometry and vegetation
+- **Reduced motion:** Static SVG landscape fallback — no 3D, no animation
+
+The 3D canvas is decorative (`aria-hidden`) — all content is real HTML layered on top.
 
 ## Implementation Plan
 
